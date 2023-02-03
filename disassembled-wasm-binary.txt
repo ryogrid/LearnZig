@@ -1,0 +1,42 @@
+$ wasm-objdump -d main.wasm
+
+main.wasm:	file format wasm 0x1
+
+Code Disassembly:
+
+000041 func[0] <fib46>:
+ 000042: 41 2e                      | i32.const 46
+ 000044: 10 81 80 80 80 00          | call 1 <main.fib>
+ 00004a: 0b                         | end
+00004c func[1] <main.fib>:
+ 00004d: 01 7f                      | local[0] type=i32
+ 00004f: 41 00                      | i32.const 0
+ 000051: 21 01                      | local.set 1
+ 000053: 02 40                      | block
+ 000055: 20 00                      |   local.get 0
+ 000057: 41 02                      |   i32.const 2
+ 000059: 49                         |   i32.lt_u
+ 00005a: 0d 00                      |   br_if 0
+ 00005c: 41 00                      |   i32.const 0
+ 00005e: 21 01                      |   local.set 1
+ 000060: 03 40                      |   loop
+ 000062: 20 00                      |     local.get 0
+ 000064: 41 7f                      |     i32.const 4294967295
+ 000066: 6a                         |     i32.add
+ 000067: 10 81 80 80 80 00          |     call 1 <main.fib>
+ 00006d: 20 01                      |     local.get 1
+ 00006f: 6a                         |     i32.add
+ 000070: 21 01                      |     local.set 1
+ 000072: 20 00                      |     local.get 0
+ 000074: 41 7e                      |     i32.const 4294967294
+ 000076: 6a                         |     i32.add
+ 000077: 22 00                      |     local.tee 0
+ 000079: 41 02                      |     i32.const 2
+ 00007b: 4f                         |     i32.ge_u
+ 00007c: 0d 00                      |     br_if 0
+ 00007e: 0b                         |   end
+ 00007f: 0b                         | end
+ 000080: 20 00                      | local.get 0
+ 000082: 20 01                      | local.get 1
+ 000084: 6a                         | i32.add
+ 000085: 0b                         | end
