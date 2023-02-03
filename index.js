@@ -5,9 +5,9 @@ function execJSFib(){
         return fib(n - 1) + fib(n - 2);
     };
     const start = performance.now();
-    console.log(fib(46));
+    var result = fib(46);
     const end = performance.now();    
-    console.log(String(end - start) + " ms");
+    alert(String(result) + "\n" + String(end - start) + " ms");
 }
 
 function execWasmFib(){
@@ -24,8 +24,8 @@ function execWasmFib(){
     .then((obj) => {
         const start = performance.now();
         // Call an exported function:
-        console.log(obj.instance.exports.fib46());
+        var result = obj.instance.exports.fib46();
         const end = performance.now();
-        console.log(String(end - start) + " ms");
+        alert(String(result) + "\n" + String(end - start) + " ms");
     })
 }
